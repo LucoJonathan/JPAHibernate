@@ -48,7 +48,20 @@ public class ProduitDAO implements IProduitDAO {
 	@Override
 	public void insert(Produit p, Connection cnx) throws Exception {
 		// TODO Auto-generated method stub
-
+		/*
+		 * Requete SQL inséré un produit : INSERT INTO produits(description,prix,quantité) VALUES ('Samsung','1500','20')*/
+		
+		String sql = "INSERT INTO produits(description,prix,quantité) VALUES(?,?,?)";
+		
+		// Créer un objet PrepardStatement à partir de la connexion et la requete sql
+		PreparedStatement ps = cnx.prepareStatement(sql);
+		// On va récupére les valeurs à insérer
+		ps.setString(1, p.getDescription());
+		ps.setDouble(2, p.getPrix());
+		ps.setInt(3, p.getQuantité());
+		
+		ps.executeUpdate();
+		
 	}
 
 	@Override

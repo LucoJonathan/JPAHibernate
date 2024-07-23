@@ -20,7 +20,14 @@ public class Application {
 			
 			System.out.println("\nTest de la méthode getAll");
 			List<Produit> produits = dao.getAll(cnx);
-			System.out.println("");
+			System.out.println(produits);
+			
+			
+			System.out.println("\nTest de la méthode Insert");
+			Produit produit = new Produit("Samsung S20",1500,23);
+			dao.insert(produit, cnx);
+			List<Produit> produits2 = dao.getAll(cnx);
+			System.out.println(produits2);
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
